@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <style>
+    .polaroid {
+        background: white;
+        padding: 10px 10px 25px 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+    }
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Special Day is Coming</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Montserrat:wght@800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0d0614;
+            color: #f3e8ff;
+            overflow-x: hidden;
+        }
+        
+        .font-serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .glow-bg {
+            background: radial-gradient(circle at 50% 45%, #2a0a2e 0%, #15061c 50%, #09030c 100%);
+        }
+
+        .glass-card {
+            background: rgba(23, 11, 29, 0.78);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(216, 180, 254, 0.18);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .polaroid {
+            background: #ffffff;
+            padding: 8px 8px 22px 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .polaroid:hover {
+            transform: scale(1.08) rotate(0deg) !important;
+            z-index: 30;
+            box-shadow: 0 18px 35px rgba(190, 24, 93, 0.35);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1.5deg); }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 18px rgba(225, 29, 72, 0.65)); }
+            50% { filter: drop-shadow(0 0 38px rgba(225, 29, 72, 0.95)); }
+        }
+
+        .gift-glow {
+            animation: pulse-glow 2.2s infinite;
+        }
+
+        /* Hujan Love Background */
+        .hearts-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(247, 37, 133, 0.25);
+            transform: rotate(45deg);
+            animation: floatUp linear infinite;
+        }
+
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .heart::before { top: -50%; left: 0; }
+        .heart::after { top: 0; left: -50%; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(45deg) scale(0.6); opacity: 0; }
+            20% { opacity: 0.5; }
+            80% { opacity: 0.5; }
+            100% { transform: translateY(-110vh) rotate(45deg) scale(1.1); opacity: 0; }
+        }
+
+        /* STYLING SLIDE 8 LAPTOP (DEFAULT: MENYAMPING 3 KOLOM) */
+        .wrapper-slide8 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1050px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .slide8-side-container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: center;
+        }
+
+        /* STYLING KHUSUS HP (LAYAR DI BAWAH 768px): TERSUSUN KE BAWAH */
+        @media (max-width: 768px) {
+            .wrapper-slide8 {
+                flex-direction: column;
+                gap: 15px;
+                padding: 10px;
+            }
+            .slide8-side-container {
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+        }
+
+        .card-s8 {
+            background: rgba(20, 10, 30, 0.95);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(217, 4, 142, 0.35);
+            padding: 24px 20px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(114, 9, 183, 0.3);
+            max-width: 340px;
+            width: 100%;
+            text-align: center;
+            flex-shrink: 0;
+            z-index: 50;
+            position: relative;
+        }
+
+        .step-s8 {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .step-s8.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-s8 {
+            padding: 10px 18px;
+            font-size: 13px;
+            font-weight: 700;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+            outline: none;
+            position: relative;
+            z-index: 70;
+        }
+
+        .btn-primary-s8 {
+            background: linear-gradient(135deg, #b5179e, #7209b7);
+            color: white;
+            box-shadow: 0 4px 15px rgba(181, 23, 158, 0.4);
+        }
+
+        .btn-yes-s8 {
+            background: linear-gradient(135deg, #7209b7, #3a0ca3);
+            color: white;
+            box-shadow: 0 4px 15px rgba(114, 9, 183, 0.5);
+        }
+
+        .btn-no-s8 {
+            background: linear-gradient(135deg, #370617, #6a040f);
+            color: #ff4d6d;
+            border: 1px solid #9d0208;
+            position: relative;
+            transition: transform 0.15s ease-out;
+            touch-action: none;
+        }
+
+        .lyrics-viewport-s8 {
+            width: 200px;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            display: block;
+            z-index: 20;
+            mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+        }
+
+        .lyrics-track-s8 {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding: 10px 0;
+        }
+
+        .lyric-item-s8 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.4;
+            text-align: center;
+            opacity: 0.2;
+            transform: translateY(15px) scale(0.9);
+            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            text-shadow: 2px 2px 0px #000000, 3px 3px 6px rgba(0, 0, 0, 0.9);
+        }
+
+        .lyric-item-s8.active-lyric {
+            color: #ff3399;
+            opacity: 1;
+            transform: translateY(0) scale(1.03);
+            text-shadow: 2px 2px 0px #3a0022, 4px 4px 0px #000000, 0px 0px 15px rgba(255, 51, 153, 0.95);
+        }
+
+        .lyric-item-s8.passed-lyric {
+            opacity: 0.25;
+            transform: translateY(-10px) scale(0.95);
+            color: #b5a0cb;
+        }
+
+        .film-strip-s8 {
+            width: 120px;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+            display: block;
+            z-index: 20;
+            pointer-events: none;
+            mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        }
+
+        @media (max-width: 768px) {
+            .film-strip-s8 {
+                width: 100px;
+                height: 200px;
+            }
+            .lyrics-viewport-s8 {
+                width: 170px;
+                height: 200px;
+            }
+        }
+
+        .film-track-s8 {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            animation: scrollFilmUp 30s linear infinite;
+        }
+
+        @keyframes scrollFilmUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        .film-frame-s8 {
+            background: #111;
+            border-left: 2px solid #333;
+            border-right: 2px solid #333;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            padding: 4px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .film-photo-inner-s8 {
+            width: 100%;
+            height: 60px;
+            overflow: hidden;
+            background: #1a0b2e;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .film-photo-inner-s8 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(13, 6, 20, 0.9);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(168, 85, 247, 0.35);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(190, 24, 93, 0.6);
+        }
+
+        .polaroid {
+            position: absolute;
+            background: white;
+            padding: 10px 10px 30px 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            z-index: 1;
+        }
+
+        .polaroid img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .top-center {
+            top: 1%;
+            left: 50%;
+            transform: translateX(-50%) rotate(-3deg);
+        }
+
+        .bottom-center {
+            bottom: 1%;
+            left: 50%;
+            transform: translateX(-50%) rotate(4deg);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center relative glow-bg">
+
+    <canvas id="starsCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <!-- Audio 1: Lagu Ulang Tahun (Slide 1-7) -->
+    <audio id="bdayMusic" loop preload="auto">
+        <source src="Lagu/selamat-ulang-tahun.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Audio 2: Lagu Interaktif Tipeku (Slide 9) -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="Lagu/Lagu.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicToggle" onclick="toggleAudio()" class="fixed top-5 right-5 z-50 w-11 h-11 rounded-full glass-card flex items-center justify-center text-pink-300 hover:text-white hover:scale-110 transition-all border border-pink-500/30 shadow-lg" title="Putar/Hentikan Musik">
+        <i id="musicIcon" class="fas fa-music text-sm"></i>
+    </button>
+
+    <main class="relative z-10 w-full max-w-5xl px-4 py-8 flex flex-col items-center justify-center min-h-screen">
+
+        <!-- ================= PAGE 1 ================= -->
+        <section id="page1" class="w-full flex flex-col items-center text-center transition-all duration-700">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#240c2b]/70 border border-pink-500/30 text-xs tracking-widest text-pink-200 uppercase mb-4 shadow-sm">
+                <i class="fas fa-heart text-pink-400 text-[10px]"></i> MENGHITUNG HARI <i class="fas fa-heart text-pink-400 text-[10px]"></i>
+            </div>
+            
+            <h1 class="font-serif-title text-4xl md:text-6xl font-normal tracking-wide text-white mb-2">
+                Your Special Day
+            </h1>
+            <h2 class="font-serif-title text-3xl md:text-5xl italic font-normal text-pink-100/90 mb-6">
+                is Coming
+            </h2>
+            
+            <p class="text-xs md:text-sm text-purple-200/80 mb-10 max-w-md font-light tracking-wide">
+                Sesuatu yang indah sedang menunggu waktunya ✨
+            </p>
+
+            <div class="grid grid-cols-4 gap-3 md:gap-6 mb-10 w-full max-w-lg">
+                <div class="glass-card p-3 md:p-5 rounded-2xl flex flex-col items-center border-pink-500/20">
+                    <span id="cd-days" class="font-serif-title text-2xl md:text-4xl font-semibold text-white">00</span>
+                    <span class="text-[10px] md:text-xs tracking-widest text-purple-300 uppercase mt-1">HARI</span>
+                </div>
+                <div class="glass-card p-3 md:p-5 rounded-2xl flex flex-col items-center border-pink-500/20">
+                    <span id="cd-hours" class="font-serif-title text-2xl md:text-4xl font-semibold text-white">00</span>
+                    <span class="text-[10px] md:text-xs tracking-widest text-purple-300 uppercase mt-1">JAM</span>
+                </div>
+                <div class="glass-card p-3 md:p-5 rounded-2xl flex flex-col items-center border-pink-500/20">
+                    <span id="cd-minutes" class="font-serif-title text-2xl md:text-4xl font-semibold text-white">00</span>
+                    <span class="text-[10px] md:text-xs tracking-widest text-purple-300 uppercase mt-1">MENIT</span>
+                </div>
+                <div class="glass-card p-3 md:p-5 rounded-2xl flex flex-col items-center border-pink-500/20">
+                    <span id="cd-seconds" class="font-serif-title text-2xl md:text-4xl font-semibold text-white">03</span>
+                    <span class="text-[10px] md:text-xs tracking-widest text-purple-300 uppercase mt-1">DETIK</span>
+                </div>
+            </div>
+
+            <div id="countdownStatus" class="flex items-center gap-2 text-xs text-purple-200/80 mb-6">
+                <span class="w-2 h-2 rounded-full bg-pink-500 animate-ping"></span>
+                <span>Waktu spesial sedang dihitung...</span>
+            </div>
+
+            <button id="openGiftBtn" onclick="nextPage(2)" disabled class="px-8 py-3.5 rounded-full bg-gradient-to-r from-gray-700 to-gray-800 text-gray-400 font-medium text-xs tracking-wider uppercase transition-all duration-300 shadow-lg cursor-not-allowed opacity-60 flex items-center gap-3 border border-gray-600/30">
+                <span>OPEN YOUR GIFT</span>
+                <i class="fas fa-gift text-sm"></i>
+            </button>
+        </section>
+
+        <!-- ================= PAGE 2 (DENGAN POP-UP MASUKKAN PASSWORD) ================= -->
+        <section id="page2" class="w-full hidden flex-col items-center text-center transition-all duration-700">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#240c2b]/70 border border-pink-500/30 text-xs tracking-widest text-pink-200 uppercase mb-8">
+                ✨ ADA SESUATU UNTUKMU ✨
+            </div>
+
+            <div onclick="showPasswordPrompt()" class="cursor-pointer group relative my-8 p-8 transition-transform duration-500 hover:scale-110">
+                <div class="absolute inset-0 rounded-full bg-pink-600/20 blur-3xl group-hover:bg-pink-500/30 transition-all"></div>
+                <div class="relative z-10 text-7xl md:text-9xl text-pink-400 gift-glow animate-float">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <div class="absolute -top-2 left-1/2 -translate-x-1/2 text-amber-300 text-2xl animate-bounce">
+                    <i class="fas fa-sparkles"></i>
+                </div>
+            </div>
+
+            <p class="text-xs md:text-sm text-purple-200/80 mt-6 tracking-wide flex items-center gap-2">
+                <i class="fas fa-hand-pointer text-pink-400 animate-bounce"></i>
+                <span>Klik kado untuk memasukkan password</span>
+            </p>
+
+            <!-- Modal Pop-up Password -->
+            <div id="passwordModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+                <div class="glass-card p-6 md:p-8 rounded-3xl max-w-sm w-full border border-pink-500/40 text-center shadow-2xl animate-fadeIn">
+                    <div class="text-pink-400 text-3xl mb-3">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="font-serif-title text-xl font-bold text-white mb-2">Masukkan Password</h3>
+                    <p class="text-xs text-purple-200/80 mb-6">Masukkan angka/password spesial untuk membuka kado ini ✨</p>
+                    
+                    <input type="password" id="giftPassword" placeholder="Ketik password di sini..." class="w-full px-4 py-3 rounded-xl bg-purple-950/60 border border-pink-500/30 text-white text-center text-sm focus:outline-none focus:border-pink-500 mb-4 tracking-widest">
+                    
+                    <p id="passwordError" class="text-xs text-red-400 mb-4 hidden font-medium">Password salah! Coba ingat-ingat lagi ya 🥺</p>
+
+                    <div class="flex gap-3">
+                        <button onclick="closePasswordPrompt()" class="w-1/2 py-2.5 rounded-xl bg-gray-800 text-gray-300 hover:bg-gray-700 text-xs font-semibold uppercase tracking-wider transition-all">Batal</button>
+                        <button onclick="checkPassword()" class="w-1/2 py-2.5 rounded-xl bg-gradient-to-r from-[#801b50] to-[#b81d64] text-white hover:opacity-90 text-xs font-semibold uppercase tracking-wider transition-all shadow-md">Buka</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3 ================= -->
+        <section id="page3" class="w-full hidden flex-col items-center text-center relative transition-all duration-700 min-h-[500px] justify-center">
+            <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-35 md:opacity-55">
+                <div class="polaroid absolute top-4 left-4 md:left-12 rotate-[-12deg] w-24 md:w-32">
+                    <img src="Foto/Foto1.jpg" class="w-full h-20 md:h-28 object-cover rounded">
+                </div>
+                <div class="polaroid absolute top-6 right-4 md:right-12 rotate-[15deg] w-24 md:w-32">
+                    <img src="Foto/Foto2.jpg" class="w-full h-20 md:h-28 object-cover rounded">
+                </div>
+                <div class="polaroid absolute bottom-8 left-8 md:left-20 rotate-[10deg] w-24 md:w-32">
+                    <img src="Foto/Foto3.jpg" class="w-full h-20 md:h-28 object-cover rounded">
+                </div>
+                <div class="polaroid absolute bottom-6 right-8 md:right-20 rotate-[-8deg] w-24 md:w-32">
+                    <img src="Foto/Foto4.jpg" class="w-full h-20 md:h-28 object-cover rounded">
+                </div>
+                <div class="polaroid top-center">
+                    <img src="Foto/Foto5.jpg" alt="Foto Tengah Atas">
+                </div>
+                <div class="polaroid bottom-center">
+                    <img src="Foto/Foto6.jpg" alt="Foto Tengah Bawah">
+                </div>
+            </div>
+
+            <div class="relative z-10 flex flex-col items-center backdrop-blur-md p-6 md:p-8 rounded-2xl border border-pink-500/10 shadow-2xl max-w-lg mx-auto" style="background-color: rgba(15, 5, 20, 0.2);">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#240c2b]/80 border border-pink-500/30 text-[11px] tracking-widest text-pink-200 uppercase mb-4">
+                    💌 A LOVE LETTER FOR YOU 💌
+                </div>
+
+                <h1 class="font-serif-title text-4xl md:text-6xl font-bold text-white mb-2">
+                    Your
+                </h1>
+                <h2 class="font-serif-title text-4xl md:text-6xl italic font-normal text-pink-100 mb-6">
+                    Special Day
+                </h2>
+
+                <p class="text-xs text-purple-200/80 mb-8 font-light italic">
+                    Created with love, just for you ✨
+                </p>
+
+                <button onclick="nextPage(4)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#801b50] to-[#b81d64] hover:from-[#9c1f63] hover:to-[#d12374] text-white font-medium text-xs tracking-wider uppercase transition-all duration-300 shadow-lg shadow-pink-950/60 hover:shadow-pink-600/40 hover:scale-105 flex items-center gap-3 border border-pink-400/30">
+                    <span>READ MY LETTER</span>
+                    <i class="fas fa-envelope-open-text text-sm"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 4 (SURAT ULANG TAHUN MURNI) ================= -->
+        <section id="page4" class="w-full hidden flex-col items-center transition-all duration-700 max-w-2xl">
+            <h2 class="font-serif-title text-3xl md:text-4xl text-white font-semibold text-center mb-6">
+                Happy Birthday
+            </h2>
+
+            <div class="glass-card p-6 md:p-8 rounded-2xl w-full text-left max-h-[60vh] overflow-y-auto leading-relaxed text-sm md:text-base text-purple-100 space-y-4 border-pink-500/25">
+                <div class="flex items-center gap-2 border-b border-pink-500/20 pb-3 mb-4">
+                    <i class="fas fa-heart text-pink-400"></i>
+                    <span class="font-semibold text-pink-200 uppercase text-xs tracking-wider">HAPPY BIRTHDAY SAYANGKUUU ❤️</span>
+                </div>
+
+                <p>Selamat ulang tahun yang ke-19 yaa Siti Nafisah! Hari ini hari yang spesial banget karena hari ini adalah hari lahir orang yang indah di hidupku.</p>
+                <p>Terima kasih sudah selalu ada, udah bikin hari-hariku lebih bahagia, dan udah menjadi alasan aku tersenyum setiap hari. Aku bersyukur banget bisa kenal sampai detik ini walaupun kita udah engga bersama.</p>
+                <p>Di umur yang baru ini, aku cuma mau doain semoga semua hal baik selalu datang ke hidup kamu. Semoga sehat selalu, panjang umur, dimudahkan segala urusannya, dan semua impian kamu bisa tercapai satu per satu.</p>
+                <p>Tetap jadi pribadi yang baik, manis, dan selalu hebat seperti sekarang yaa. Jangan lupa kalau aku selalu ada buat kamu dalam keadaan apa pun walaupun aku engga ada di dekat kamu terus.</p>
+                <p>Sekali lagi, selamat ulang tahun Nafisah. Semoga hari ini penuh kebahagiaan dan tahun ini menjadi tahun terbaik untukmu.</p>
+
+                <div class="pt-4 text-right italic font-serif-title text-pink-300">
+                    I love you, today, tomorrow, and always.<br>
+                    -Dimas. ✨💖
+                </div>
+            </div>
+
+            <button onclick="nextPage(5)" class="mt-8 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#801b50] to-[#b81d64] hover:from-[#9c1f63] hover:to-[#d12374] text-white font-medium text-xs tracking-wider uppercase transition-all duration-300 shadow-lg shadow-pink-950/60 hover:shadow-pink-600/40 hover:scale-105 flex items-center gap-3 border border-pink-400/30">
+                <span>NEXT: HAL SPESIAL BUAT KAMU</span>
+                <i class="fas fa-arrow-right text-sm"></i>
+            </button>
+        </section>
+
+        <!-- ================= PAGE 5 (SLIDE TAMBAHAN SPESIAL / SALTING SECTION) ================= -->
+        <section id="page5" class="w-full hidden flex-col items-center transition-all duration-700 max-w-xl">
+            <h2 class="font-serif-title text-3xl md:text-4xl text-white font-semibold text-center mb-6">
+                Something Special For You ✨
+            </h2>
+
+            <div class="glass-card p-6 md:p-8 rounded-3xl w-full flex flex-col items-center space-y-6 border border-pink-500/35">
+                
+                <!-- Poin-Poin Ngangenin -->
+                <div class="w-full p-5 rounded-2xl bg-pink-950/30 border border-pink-500/30 text-left">
+                    <p class="text-xs font-bold text-pink-300 uppercase tracking-widest mb-3 flex items-center gap-2">
+                        <i class="fas fa-sparkles text-amber-300"></i> Hal yang Paling Bikin Aku Kangen:
+                    </p>
+                    <ul class="text-xs md:text-sm space-y-2.5 text-purple-100 font-light">
+                        <li class="flex items-start gap-2"><span>💖</span> Senyum kamu waktu lagi ketawa lepas yang paling tulus.</li>
+                        <li class="flex items-start gap-2"><span>💖</span> Kebiasaan kecil kamu yang suka ngomel-ngomel gemesin.</li>
+                        <li class="flex items-start gap-2"><span>💖</span> Suara dan perhatian kamu yang selalu berhasil bikin tenang.</li>
+                        <li class="flex items-start gap-2"><span>💖</span> Parfume kamu yang khas bikin aku selalu inget kamu.</li>
+                        <li class="flex items-start gap-2"><span>💖</span> Dan masih banyak lagi hal-hal kecil yang bikin aku terbayang-bayang kamu terus hehe.</li>
+                    </ul>
+                </div>
+
+                <!-- Live Counter Kenangan -->
+                <div class="w-full p-4 text-center rounded-2xl bg-purple-950/40 border border-purple-500/30 shadow-inner">
+                    <i class="fas fa-clock text-pink-400 mb-1"></i>
+                    <p class="text-xs text-purple-200">
+                        Sudah berjalan <b id="daysTogether" class="text-white text-sm">...</b> hari sejak kita pertama kali saling kenal & jadi bagian terindah dalam hidupku.
+                    </p>
+                </div>
+
+            </div>
+
+            <button onclick="nextPage(6)" class="mt-8 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#801b50] to-[#b81d64] hover:from-[#9c1f63] hover:to-[#d12374] text-white font-medium text-xs tracking-wider uppercase transition-all duration-300 shadow-lg shadow-pink-950/60 hover:shadow-pink-600/40 hover:scale-105 flex items-center gap-3 border border-pink-400/30">
+                <span>OUR MEMORIES</span>
+                <i class="fas fa-arrow-right text-sm"></i>
+            </button>
+        </section>
+
+        <!-- ================= PAGE 6 ================= -->
+        <section id="page6" class="w-full min-h-screen hidden flex-col items-center justify-center text-center transition-all duration-700 p-4">
+            <h2 class="font-serif-title text-3xl md:text-5xl font-bold text-white mb-1">
+                Our Memories
+            </h2>
+            <p class="text-xs text-purple-200/80 italic mb-8">
+                ✨ every moment captured in love ✨
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-3 md:gap-5 w-full max-w-5xl mb-10 px-4">
+                <div class="bg-white p-3 pb-8 shadow-2xl transform -rotate-4 hover:rotate-0 hover:scale-105 transition-all duration-300 rounded-sm w-36 md:w-52">
+                    <img src="Berdua/IMG-20250927-WA0048.jpg" class="w-full h-32 md:h-44 object-cover">
+                </div>
+                <div class="bg-white p-3 pb-8 shadow-2xl transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300 rounded-sm w-36 md:w-52">
+                    <img src="Berdua/IMG-20250927-WA0056.jpg" class="w-full h-32 md:h-44 object-cover">
+                </div>
+                <div class="bg-white p-3 pb-8 shadow-2xl transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 rounded-sm w-36 md:w-52">
+                    <img src="Berdua/IMG-20250927-WA0065.jpg" class="w-full h-32 md:h-44 object-cover">
+                </div>
+                <div class="bg-white p-3 pb-8 shadow-2xl transform rotate-5 hover:rotate-0 hover:scale-105 transition-all duration-300 rounded-sm w-36 md:w-52">
+                    <img src="Berdua/IMG-20250927-WA0051.jpg" class="w-full h-32 md:h-44 object-cover">
+                </div>
+            </div>
+
+            <button onclick="nextPage(7)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#801b50] to-[#b81d64] hover:from-[#9c1f63] hover:to-[#d12374] text-white font-medium text-xs tracking-wider uppercase transition-all duration-300 shadow-lg shadow-pink-950/60 hover:shadow-pink-600/40 hover:scale-105 flex items-center gap-3 border border-pink-400/30">
+                <span>WATCH VIDEO</span>
+                <i class="fas fa-play text-xs"></i>
+            </button>
+        </section>
+
+        <!-- ================= PAGE 7 ================= -->
+        <section id="page7" class="w-full hidden flex-col items-center text-center transition-all duration-700 max-w-2xl">
+            <h2 class="font-serif-title text-3xl md:text-5xl font-semibold text-white mb-1">
+                A Moment For You
+            </h2>
+            <p class="text-xs text-purple-200/80 italic mb-6">✨ a special video message ✨</p>
+
+            <div class="glass-card p-3 rounded-2xl w-full shadow-2xl mb-8 relative group border-pink-500/25">
+                <video id="memoriesVideo" controls class="w-full h-64 md:h-96 object-cover rounded-xl bg-black">
+                    <source src="Video/Ucapan.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+            </div>
+
+            <button onclick="nextPage(8)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#801b50] to-[#b81d64] hover:from-[#9c1f63] hover:to-[#d12374] text-white font-medium text-xs tracking-wider uppercase transition-all duration-300 shadow-lg shadow-pink-950/60 hover:shadow-pink-600/40 hover:scale-105 flex items-center gap-3 border border-pink-400/30">
+                <span>BIRTHDAY WISHES</span>
+                <i class="fas fa-heart text-xs"></i>
+            </button>
+        </section>
+
+        <!-- ================= PAGE 8 ================= -->
+        <section id="page8" class="w-full hidden flex-col items-center text-center transition-all duration-700 max-w-xl">
+            <div class="glass-card p-8 md:p-10 rounded-3xl w-full flex flex-col items-center mb-8 border border-pink-500/30">
+                <h3 class="font-serif-title text-2xl md:text-3xl font-semibold text-pink-100 mb-4">Birthday Wishes</h3>
+                <p class="text-xs text-pink-400 tracking-wider uppercase mb-6 font-medium">Happy Birthday, my love 💕</p>
+
+                <p class="text-xs md:text-sm text-purple-100 leading-relaxed mb-6 font-light"> 💖
+                    I wish you happiness, good health, success, and endless blessings in this new chapter of your life. May all your dreams come true, may your days be filled with laughter, and may your heart always find peace. Thank you for having been such a beautiful part of my life and for teaching me so many valuable lessons. I hope this brief message adds a little something extra to make your special day even more memorable. Stay happy, stay healthy, and keep moving forward. ✨
+                </p>
+
+                <div class="mt-4 pt-6 border-t border-pink-500/20 w-full">
+                    <h1 id="cyclingTitle" class="font-serif-title text-3xl md:text-4xl font-bold text-white transition-opacity duration-500">I Love You</h1>
+                    <p class="text-xs text-purple-200/80 italic mt-2">Thank you for being part of my life. Forever yours. 💖</p>
+                </div>
+            </div>
+
+            <button onclick="nextPage(9)" class="px-8 py-3 rounded-full bg-gradient-to-r from-[#801b50] to-[#b81d64] hover:from-[#9c1f63] hover:to-[#d12374] text-white font-medium text-xs tracking-wider uppercase transition-all duration-300 shadow-lg shadow-pink-950/60 hover:shadow-pink-600/40 hover:scale-105 flex items-center gap-3 border border-pink-400/30">
+                <span>LANJUT KE SPESIAL SLIDE</span>
+                <i class="fas fa-arrow-right text-xs"></i>
+            </button>
+        </section>
+
+        <!-- ================= PAGE 9 (SLIDE TERAKHIR / TIPEKU) ================= -->
+        <section id="page9" class="w-full hidden flex-col items-center text-center transition-all duration-700">
+            <div class="wrapper-slide8">
+                
+                <div class="card-s8">
+                    <div class="step-s8 active" id="s8-step1">
+                        <h1 style="color: #f72585; font-size: 18px; font-weight: 700; margin-bottom: 10px;">Hai Kamu... ✨</h1>
+                        <p style="color: #e0aaff; font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Boleh luangkan waktu sebentar buat baca ini? Ada hal kecil yang pengen aku sampein.</p>
+                        <div class="btn-group" style="display:flex; justify-content:center;">
+                            <button class="btn-s8 btn-primary-s8" onclick="s8NextStep(2)">Boleh, apa?</button>
+                        </div>
+                    </div>
+
+                    <div class="step-s8" id="s8-step2">
+                        <h1 style="color: #f72585; font-size: 18px; font-weight: 700; margin-bottom: 10px;">Jujur... 💭</h1>
+                        <p style="color: #e0aaff; font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Akhir-akhir ini aku sering banget mikirin kenangan kita dulu. Aku kangen banget sama momen-momen saat kita bareng.</p>
+                        <div class="btn-group" style="display:flex; justify-content:center;">
+                            <button class="btn-s8 btn-primary-s8" onclick="s8NextStep(3)">Lanjut...</button>
+                        </div>
+                    </div>
+
+                    <div class="step-s8" id="s8-step3">
+                        <h1 style="color: #f72585; font-size: 18px; font-weight: 700; margin-bottom: 10px;">I Miss U 🌟</h1>
+                        <p style="color: #e0aaff; font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Banyak banget cerita di antara kita yang nggak bakal bisa aku lupain begitu aja.</p>
+                        <div class="btn-group" style="display:flex; justify-content:center;">
+                            <button class="btn-s8 btn-primary-s8" onclick="s8NextStep(4)">Lanjut lagi...</button>
+                        </div>
+                    </div>
+
+                    <div class="step-s8" id="s8-step4">
+                        <h1 style="color: #f72585; font-size: 18px; font-weight: 700; margin-bottom: 10px;">Semoga... ✨</h1>
+                        <p style="color: #e0aaff; font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Kita bisa belajar dari kesalahan kemarin dan tumbuh jadi lebih baik lagi kedepannya.</p>
+                        <div class="btn-group" style="display:flex; justify-content:center;">
+                            <button class="btn-s8 btn-primary-s8" onclick="s8NextStep(5)">Satu hal lagi...</button>
+                        </div>
+                    </div>
+
+                    <div class="step-s8" id="s8-step5">
+                        <h1 style="color: #f72585; font-size: 18px; font-weight: 700; margin-bottom: 10px;">Hmmm 🥺</h1>
+                        <p style="color: #e0aaff; font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Maukah kita mulai semuanya dari awal lagi?, memperbaiki hal-hal yang kurang, dan jalan bareng lagi?</p>
+                        <div class="btn-group" style="display:flex; justify-content:center; gap: 10px; position:relative; min-height:45px;">
+                            <button class="btn-s8 btn-yes-s8" onclick="s8NextStep(6)">Mau Banget ❤️</button>
+                            <button class="btn-s8 btn-no-s8" id="btnNoS8" ontouchstart="pindahTombolS8(event)" onmouseover="pindahTombolS8(event)">Enggak</button>
+                        </div>
+                    </div>
+
+                    <div class="step-s8" id="s8-step6">
+                        <h1 style="color: #f72585; font-size: 18px; font-weight: 700; margin-bottom: 10px;">Yeay! 🎉</h1>
+                        <p style="color: #e0aaff; font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Makasih ya udah mau kasih kesempatan kedua. Langsung klik tombol di bawah buat kirim pesan ke WhatsApp aku ya! ❤️</p>
+                        <div class="btn-group" style="display:flex; justify-content:center;">
+                            <button class="btn-s8 btn-yes-s8" style="width: 100%;" onclick="kirimWhatsApp()">Kirim Pesan ke WA 💌</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide8-side-container">
+                    <div class="lyrics-viewport-s8" id="lyricsBoxS8">
+                        <div class="lyrics-track-s8" id="lyricsTrackS8">
+                            <div class="lyric-item-s8" data-time="2">"Ye-le-le-le-le pam-pa-ram"</div>
+                            <div class="lyric-item-s8" data-time="13">"Kau bilang maaf kujawab iya hati-hati"</div>
+                            <div class="lyric-item-s8" data-time="18">"Kubilang santai padahal gugup setengah mati"</div>
+                            <div class="lyric-item-s8" data-time="23">"Di dalam kereta kita hadap-hadapan gini"</div>
+                            <div class="lyric-item-s8" data-time="28">"Mataku ke jendela padahal ngintip kamu lagi"</div>
+                            <div class="lyric-item-s8" data-time="33">"Di kepala kata antri masuk hati"</div>
+                            <div class="lyric-item-s8" data-time="37">"Malah salting sendiri"</div>
+                            <div class="lyric-item-s8" data-time="42">"Potongan sebahu poni depan lucu"</div>
+                            <div class="lyric-item-s8" data-time="47">"Gigi gingsul satu senyum malu-malu"</div>
+                            <div class="lyric-item-s8" data-time="52">"Tuhan tolong aku tenangkan jantungku"</div>
+                            <div class="lyric-item-s8" data-time="57">"Gadis di depanku itu si tipeku"</div>
+                            <div class="lyric-item-s8" data-time="75">"Geser posisi biar bisa curi pandang lagi"</div>
+                            <div class="lyric-item-s8" data-time="81">"Sok asik nyanyi padahal fals setengah mati"</div>
+                            <div class="lyric-item-s8" data-time="86">"Belum selesai kereta tiba-tiba berhenti"</div>
+                            <div class="lyric-item-s8" data-time="91">"Kau pegang bahu ini aku tambah gemetar lagi"</div>
+                            <div class="lyric-item-s8" data-time="96">"Di kepala kata antri masuk hati"</div>
+                            <div class="lyric-item-s8" data-time="100">"Malah salting sendiri"</div>
+                            <div class="lyric-item-s8" data-time="105">"Potongan sebahu poni depan lucu"</div>
+                            <div class="lyric-item-s8" data-time="110">"Gigi gingsul satu senyum malu-malu"</div>
+                            <div class="lyric-item-s8" data-time="115">"Tuhan tolong aku tenangkan jantungku"</div>
+                            <div class="lyric-item-s8" data-time="120">"Gadis di depanku itu si tipeku"</div>
+                            <div class="lyric-item-s8" data-time="150">"Di kepala kata antri masuk hati Malah salting sendiri"</div>
+                            <div class="lyric-item-s8" data-time="157">"Potongan sebahu poni depan lucu"</div>
+                            <div class="lyric-item-s8" data-time="162">"Gigi gingsul satu senyum malu-malu"</div>
+                            <div class="lyric-item-s8" data-time="168">"Tuhan tolong aku tenangkan jantungku"</div>
+                            <div class="lyric-item-s8" data-time="173">"Gadis di depanku itu si tipeku"</div>
+                            <div class="lyric-item-s8" data-time="178">"Potongan sebahu poni depan lucu"</div>
+                            <div class="lyric-item-s8" data-time="184">"Gigi gingsul satu senyum malu-malu"</div>
+                            <div class="lyric-item-s8" data-time="189">"Tuhan tolong aku tenangkan jantungku"</div>
+                            <div class="lyric-item-s8" data-time="194">"Gadis di depanku itu si tipeku"</div>
+                            <div class="lyric-item-s8" data-time="206">"Itu si tipeku"</div>
+                            <div class="lyric-item-s8" data-time="217">"Itu si tipeku"</div>
+                        </div>
+                    </div>
+
+                    <div class="film-strip-s8" id="filmBoxS8">
+                        <div class="film-track-s8" id="filmTrackS8">
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20250811-WA0142.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20250811-WA0143.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0041.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0064.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0068.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0072.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0075.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0076.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0078.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0080.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251027-WA0007.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251027-WA0009.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251027-WA0010.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251027-WA0013.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251027-WA0055.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251027-WA0056.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251114-WA0029.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251114-WA0032.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251114-WA0041.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251123-WA0075.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+
+                            <!-- DUPLIKAT -->
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20250811-WA0142.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20250811-WA0143.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0041.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0064.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0068.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0072.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0075.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0076.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0078.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251026-WA0080.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251027-WA0007.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251027-WA0009.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251027-WA0010.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251027-WA0013.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251027-WA0055.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251027-WA0056.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251114-WA0029.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251114-WA0032.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251114-WA0041.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                            <div class="film-frame-s8"><div class="film-photo-inner-s8"><img src="Foto/IMG-20251123-WA0075.jpg" alt="Foto" onerror="this.style.display='none'"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <button onclick="replayApp()" class="mt-8 px-8 py-3 rounded-full bg-[#240c2b]/80 hover:bg-[#381343] text-pink-200 border border-pink-500/30 font-medium text-xs tracking-wider uppercase transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                <i class="fas fa-rotate-right text-xs"></i>
+                <span>REPLAY DARI AWAL</span>
+            </button>
+        </section>
+
+    </main>
+
+    <!-- JS SCRIPTS -->
+    <script>
+        // Tanggal awal hitungan hari bersama
+        const startDate = new Date(2025, 6, 13); 
+
+        const bdayMusic = document.getElementById('bdayMusic');
+        const bgMusic = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = false;
+
+        const today = new Date();
+        const diffTime = Math.abs(today - startDate);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const daysEl = document.getElementById('daysTogether');
+        if(daysEl) daysEl.innerText = diffDays;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.addEventListener('click', function startOnFirstInteraction() {
+                if (!isPlaying) {
+                    bdayMusic.volume = 0;
+                    bdayMusic.play().then(() => {
+                        fadeInAudio(bdayMusic, 2500);
+                        isPlaying = true;
+                        musicIcon.className = "fas fa-compact-disc text-sm animate-spin text-pink-400";
+                    }).catch(e => console.log("Audio play blocked:", e));
+                }
+                document.body.removeEventListener('click', startOnFirstInteraction);
+            }, { once: true });
+        });
+
+        function fadeInAudio(audioObj, duration) {
+            let volume = 0;
+            audioObj.volume = volume;
+            let interval = 50;
+            let step = interval / duration;
+            let fade = setInterval(() => {
+                volume += step;
+                if (volume >= 1) {
+                    volume = 1;
+                    clearInterval(fade);
+                }
+                audioObj.volume = volume;
+            }, interval);
+        }
+
+        function fadeOutAudio(audioObj, duration, onComplete) {
+            let volume = audioObj.volume;
+            let interval = 50;
+            let step = volume / (duration / interval);
+            let fade = setInterval(() => {
+                volume -= step;
+                if (volume <= 0) {
+                    volume = 0;
+                    clearInterval(fade);
+                    audioObj.pause();
+                    audioObj.currentTime = 0;
+                    if (onComplete) onComplete();
+                }
+                audioObj.volume = volume;
+            }, interval);
+        }
+
+        function toggleAudio() {
+            const activeAudio = (document.getElementById('page9').classList.contains('flex')) ? bgMusic : bdayMusic;
+            if (isPlaying) {
+                activeAudio.pause();
+                musicIcon.className = "fas fa-music text-sm opacity-50";
+                isPlaying = false;
+            } else {
+                activeAudio.play().then(() => {
+                    musicIcon.className = "fas fa-compact-disc text-sm animate-spin text-pink-400";
+                    isPlaying = true;
+                }).catch(e => console.log("Audio play prevented:", e));
+            }
+        }
+
+        // --- SKRIP FITUR PASSWORD KADO (SLIDE 2) ---
+        const correctPassword = "aku sayang kamu"; // Ganti password sesuai keinginanmu di sini!
+
+        function showPasswordPrompt() {
+            document.getElementById('passwordModal').classList.remove('hidden');
+            document.getElementById('passwordModal').classList.add('flex');
+            document.getElementById('giftPassword').value = '';
+            document.getElementById('passwordError').classList.add('hidden');
+        }
+
+        function closePasswordPrompt() {
+            document.getElementById('passwordModal').classList.add('hidden');
+            document.getElementById('passwordModal').classList.remove('flex');
+        }
+
+        function checkPassword() {
+            const inputVal = document.getElementById('giftPassword').value;
+            const errorText = document.getElementById('passwordError');
+
+            if (inputVal === correctPassword) {
+                closePasswordPrompt();
+                nextPage(3); // Lanjut ke slide surat berikutnya jika benar
+            } else {
+                errorText.classList.remove('hidden');
+                document.getElementById('giftPassword').classList.add('shake');
+                setTimeout(() => {
+                    document.getElementById('giftPassword').classList.remove('shake');
+                }, 400);
+            }
+        }
+        // -------------------------------------------
+
+        function nextPage(pageNum) {
+            const video = document.getElementById('memoriesVideo');
+            if (pageNum !== 7 && video) {
+                video.pause();
+            }
+
+            if (pageNum === 9) {
+                fadeOutAudio(bdayMusic, 2000, () => {
+                    bgMusic.volume = 0;
+                    bgMusic.play().then(() => {
+                        fadeInAudio(bgMusic, 2000);
+                        musicIcon.className = "fas fa-compact-disc text-sm animate-spin text-pink-400";
+                        isPlaying = true;
+                    }).catch(err => console.log("Autoplay dicegah browser:", err));
+                });
+            }
+
+            for (let i = 1; i <= 9; i++) {
+                const page = document.getElementById(`page${i}`);
+                if (page) {
+                    page.classList.add('hidden');
+                    page.classList.remove('flex');
+                }
+            }
+
+            const targetPage = document.getElementById(`page${pageNum}`);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                targetPage.classList.add('flex');
+            }
+
+            if (pageNum === 8) {
+                startTextCycle();
+            }
+        }
+
+        function replayApp() {
+            bgMusic.pause();
+            bgMusic.currentTime = 0;
+            bdayMusic.currentTime = 0;
+            bdayMusic.volume = 0;
+            bdayMusic.play();
+            fadeInAudio(bdayMusic, 2000);
+            isPlaying = true;
+            musicIcon.className = "fas fa-compact-disc text-sm animate-spin text-pink-400";
+            nextPage(1);
+        }
+
+        let cycleInterval;
+        function startTextCycle() {
+            const titles = ["Happy Birthday", "With All My Love", "Always & Forever"];
+            let index = 0;
+            const titleEl = document.getElementById('cyclingTitle');
+
+            if (cycleInterval) clearInterval(cycleInterval);
+
+            cycleInterval = setInterval(() => {
+                titleEl.style.opacity = '0';
+                setTimeout(() => {
+                    index = (index + 1) % titles.length;
+                    titleEl.innerText = titles[index];
+                    titleEl.style.opacity = '1';
+                }, 500);
+            }, 3000);
+        }
+
+        const canvas = document.getElementById('starsCanvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function initStars() {
+            stars = [];
+            const count = Math.floor((canvas.width * canvas.height) / 7500);
+            for (let i = 0; i < count; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.8,
+                    alpha: Math.random(),
+                    speed: 0.005 + Math.random() * 0.012
+                });
+            }
+        }
+
+        function animateStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                star.alpha += star.speed;
+                if (star.alpha > 1 || star.alpha < 0) star.speed = -star.speed;
+                ctx.fillStyle = `rgba(243, 232, 255, ${Math.abs(star.alpha)})`;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animateStars);
+        }
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initStars();
+        });
+
+        resizeCanvas();
+        initStars();
+        animateStars();
+
+        // Count Down 3 Detik di Slide 1
+        let timeLeft = 3;
+        function updateCountdown() {
+            if (timeLeft > 0) {
+                document.getElementById('cd-days').innerText = "00";
+                document.getElementById('cd-hours').innerText = "00";
+                document.getElementById('cd-minutes').innerText = "00";
+                document.getElementById('cd-seconds').innerText = String(timeLeft).padStart(2, '0');
+                timeLeft--;
+            } else {
+                document.getElementById('cd-seconds').innerText = "00";
+                document.getElementById('countdownStatus').innerHTML = '<span class="w-2 h-2 rounded-full bg-pink-500 animate-ping"></span><span class="text-pink-300 font-bold">Waktu habis! Hadiah siap dibuka! ✨</span>';
+                
+                const openBtn = document.getElementById('openGiftBtn');
+                openBtn.removeAttribute('disabled');
+                openBtn.className = "px-8 py-3.5 rounded-full bg-gradient-to-r from-[#801b50] to-[#b81d64] hover:from-[#9c1f63] hover:to-[#d12374] text-white font-medium text-xs tracking-wider uppercase transition-all duration-300 shadow-lg shadow-pink-950/60 hover:shadow-pink-600/40 hover:scale-105 flex items-center gap-3 border border-pink-400/35 cursor-pointer";
+            }
+        }
+        setInterval(updateCountdown, 1000);
+
+        bgMusic.addEventListener('timeupdate', () => {
+            const currentTime = bgMusic.currentTime;
+            const items = document.querySelectorAll('.lyric-item-s8');
+            const track = document.getElementById('lyricsTrackS8');
+            
+            let currentIndex = -1;
+
+            items.forEach((item, index) => {
+                const itemTime = parseFloat(item.getAttribute('data-time'));
+                if (currentTime >= itemTime) {
+                    currentIndex = index;
+                }
+            });
+
+            if (currentIndex !== -1 && track) {
+                const targetItem = items[currentIndex];
+                const offset = targetItem.offsetTop + (targetItem.offsetHeight / 2);
+                track.style.transform = `translateY(-${offset}px)`;
+
+                items.forEach((item, idx) => {
+                    item.classList.remove('active-lyric', 'passed-lyric');
+                    if (idx === currentIndex) {
+                        item.classList.add('active-lyric');
+                    } else if (idx < currentIndex) {
+                        item.classList.add('passed-lyric');
+                    }
+                });
+            }
+        });
+
+        function createHeart() {
+            const container = document.getElementById('heartsBg');
+            if(!container) return;
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            const size = Math.random() * 16 + 10;
+            heart.style.width = size + 'px';
+            heart.style.height = size + 'px';
+            heart.style.left = Math.random() * 100 + 'vw';
+            
+            const duration = Math.random() * 3.5 + 3.5;
+            heart.style.animationDuration = duration + 's';
+            
+            container.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, duration * 1000);
+        }
+        setInterval(createHeart, 250);
+
+        function s8NextStep(stepNumber) {
+            document.querySelectorAll('.step-s8').forEach(el => el.classList.remove('active'));
+            const targetStep = document.getElementById('s8-step' + stepNumber);
+            if(targetStep) targetStep.classList.add('active');
+
+            if(stepNumber === 5) {
+                resetBtnNoPosition();
+            }
+        }
+
+        function resetBtnNoPosition() {
+            const btnNo = document.getElementById('btnNoS8');
+            if(btnNo) btnNo.style.transform = 'translate(0px, 0px)';
+        }
+
+        function pindahTombolS8(e) {
+            if(e) e.preventDefault();
+            const btnNo = document.getElementById('btnNoS8');
+            const randomX = (Math.random() - 0.5) * 140;
+            const randomY = (Math.random() - 0.5) * 80;
+            btnNo.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+
+        function kirimWhatsApp() {
+            const nomorWa = "6281283418624"; 
+            const pesan = encodeURIComponent("Aku mau balikan... ❤️ Makasih udah buat web ini buat aku.");
+            window.location.href = `https://wa.me/${nomorWa}?text=${pesan}`;
+        }
+
+        // --- KONTROL VIDEO: PAUSE LAGU SAAT VIDEO DIPUTAR & RESUME SAAT SELESAI ---
+        const memoriesVideo = document.getElementById('memoriesVideo');
+        let wasMusicPlaying = false;
+
+        if (memoriesVideo) {
+            memoriesVideo.addEventListener('play', function() {
+                if (!bdayMusic.paused) {
+                    wasMusicPlaying = true;
+                    bdayMusic.pause();
+                } else if (!bgMusic.paused) {
+                    wasMusicPlaying = true;
+                    bgMusic.pause();
+                }
+            });
+
+            memoriesVideo.addEventListener('pause', function() {
+                if (wasMusicPlaying && memoriesVideo.currentTime < memoriesVideo.duration) {
+                    resumeActiveMusic();
+                }
+            });
+
+            memoriesVideo.addEventListener('ended', function() {
+                if (wasMusicPlaying) {
+                    resumeActiveMusic();
+                    wasMusicPlaying = false;
+                }
+            });
+        }
+
+        function resumeActiveMusic() {
+            if (typeof isPlaying !== 'undefined' && isPlaying) {
+                const page9 = document.getElementById('page9');
+                if (page9 && !page9.classList.contains('hidden')) {
+                    bgMusic.play().catch(() => {});
+                } else {
+                    bdayMusic.play().catch(() => {});
+                }
+            }
+        }
+    </script>
+</body>
+</html>
